@@ -1,4 +1,4 @@
-from rich import print
+from rich import print # pip install colorama before running
 from time import sleep
 from random import randint
 totalBooks = []
@@ -73,4 +73,5 @@ def bowlingalley():
         except ValueError:
             print("Incorrect value, please retry.")
             bowlingalley()
+
 bowlingalley()
