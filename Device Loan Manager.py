@@ -1,0 +1,66 @@
+from time import sleep
+loans = []
+id = 1
+print("NOTE: ANY DATE IS IN THE FORMAT: DD/MM/YYYY\n\n\n")
+def loancreate():
+    global id
+    print("Please create a new loan: \n\n")
+    loan = {
+        "Loan_ID: ": id,
+        "Student_Name: ": input("Enter Student Name: "),
+        "Student_ID: ": input("Enter Student ID: "),
+        "Device: ": input("Enter the Device Type: "),
+        "Device_ID: ": input("Enter the Device ID: "),
+        "Date_Out: ": input("Enter the date it was given out: "),
+        "Date_Due: ": input("Enter the date its due: "),
+        "Returned? ": False
+    }
+    loans.append(loan)
+    id += 1
+    print("Loan Created!")
+    sleep(2)
+    return
+
+def viewloan():
+    print("Lones:")
+    if not loans:
+        print("There are no current loans!")
+        return
+    for loan in loans:
+        print(loan)
+
+def loanupdate():
+    loanid = int(input("Enter the loan ID: "))
+    for loan in loans:
+        if loan["Loan_ID"] == loanid:
+            choice = int(input("What do you want to do?\n[1] Mark as Returned\n[2] Update Due Date\n[3] Return to the Menu"))
+            if choice == 1:
+                loan["Returned? "] = True
+                print("Successfully marked!")
+            elif choice == 2:
+                loan["Date Due: "] = input("Enter new due date: ")
+                print("Date Due successfully updated!")
+            elif choice == 3:
+                deviceloanmanagermenu()
+            return
+    print("Loan ID not Found.")
+
+def deviceloanmanagermenu():
+    while True:
+        print("Device Loan Manager")
+        decision = int(input("[1] Create a loan\n[2] Update a loan\n[3] Search for a loan\n[4] View loans\n[5] Exit\n> "))
+        if decision == 1:
+            loancreate()
+        elif decision == 2:
+            loanupdate()
+        elif decision == 3:
+            loansearch()
+        elif decision == 4:
+            viewloan()
+        elif decision == 5:
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid value")
+            deviceloanmanagermenu()
+deviceloanmanagermenu()
