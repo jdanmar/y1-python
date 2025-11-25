@@ -1,6 +1,6 @@
 from time import sleep
 loans = []
-id = 1
+id = 1 # Always the first Loan ID
 print("NOTE: ANY DATE IS IN THE FORMAT: DD/MM/YYYY\n\n\n")
 def loancreate():
     global id
@@ -16,7 +16,7 @@ def loancreate():
         "Returned? ": False
     }
     loans.append(loan)
-    id += 1
+    id += 1 # To always make a unique Loan ID
     print("Loan Created!")
     sleep(2)
     return
@@ -76,4 +76,5 @@ def deviceloanmanagermenu():
             print("Invalid value")
             deviceloanmanagermenu()
 deviceloanmanagermenu()
+
 
