@@ -48,7 +48,7 @@ def searchloan():
     print("Student/Device ID not Found.")
 
 def viewloan():
-    print("Lones:")
+    print("Loans:")
     if not loans:
         print("There are no current loans!")
         sleep(1.5)
@@ -76,3 +76,4 @@ def deviceloanmanagermenu():
             print("Invalid value")
             deviceloanmanagermenu()
 deviceloanmanagermenu()
+
