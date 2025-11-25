@@ -1,7 +1,6 @@
 from time import sleep
 loans = []
-id = 1 # Always the first Loan ID
-print("NOTE: ANY DATE IS IN THE FORMAT: DD/MM/YYYY\n\n\n")
+id = 1
 def loancreate():
     global id
     print("Please create a new loan: \n\n")
@@ -16,7 +15,7 @@ def loancreate():
         "Returned? ": False
     }
     loans.append(loan)
-    id += 1 # To always make a unique Loan ID
+    id += 1 # Creates a unique ID
     print("Loan Created!")
     sleep(2)
     return
@@ -24,7 +23,7 @@ def loancreate():
 def loanupdate():
     loanid = int(input("Enter the loan ID: "))
     for loan in loans:
-        if loan["Loan_ID: "] == loanid:
+        if loan["Loan_ID: "] == loanid: # Data validation
             choice = int(input("What do you want to do?\n[1] Mark as Returned\n[2] Update Due Date\n[3] Return to the Menu"))
             if choice == 1:
                 loan["Returned? "] = True
@@ -49,18 +48,27 @@ def searchloan():
 
 def viewloan():
     print("Loans:")
-    if not loans:
+    if not loan in loans: # Checks if there's any loans
         print("There are no current loans!")
         sleep(1.5)
         return
     for loan in loans:
         print(loan)
 
+def deleteloan():
+    loanidconfirmation = int(input("Enter loan ID: "))
+    for loan in loans:
+        if loan["Loan_ID: "] == loanidconfirmation:
+            loan.clear()
+            print("Loan deleted successfully!")
+            sleep(2)
+            return
+    print("Loan ID not Found.")
 
 def deviceloanmanagermenu():
     while True:
         print("Device Loan Manager")
-        decision = int(input("[1] Create a loan\n[2] Update a loan\n[3] Search for a loan\n[4] View loans\n[5] Exit\n> "))
+        decision = int(input("[1] Create a loan\n[2] Update a loan\n[3] Search for a loan\n[4] View loans\n[5] Delete a loan\n[6] Exit\n> "))
         if decision == 1:
             loancreate()
         elif decision == 2:
@@ -70,11 +78,14 @@ def deviceloanmanagermenu():
         elif decision == 4:
             viewloan()
         elif decision == 5:
+            deleteloan()
+        elif decision == 6:
             print("Goodbye!")
             break
         else:
             print("Invalid value")
             deviceloanmanagermenu()
 deviceloanmanagermenu()
+
 
 
