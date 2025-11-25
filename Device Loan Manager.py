@@ -21,29 +21,41 @@ def loancreate():
     sleep(2)
     return
 
-def viewloan():
-    print("Lones:")
-    if not loans:
-        print("There are no current loans!")
-        return
-    for loan in loans:
-        print(loan)
-
 def loanupdate():
     loanid = int(input("Enter the loan ID: "))
     for loan in loans:
-        if loan["Loan_ID"] == loanid:
+        if loan["Loan_ID: "] == loanid:
             choice = int(input("What do you want to do?\n[1] Mark as Returned\n[2] Update Due Date\n[3] Return to the Menu"))
             if choice == 1:
                 loan["Returned? "] = True
-                print("Successfully marked!")
+                print("Successfully marked!\n\n")
+                sleep(2)
             elif choice == 2:
                 loan["Date Due: "] = input("Enter new due date: ")
-                print("Date Due successfully updated!")
+                print("Date Due successfully updated!\n\n")
+                sleep(2)
             elif choice == 3:
                 deviceloanmanagermenu()
             return
     print("Loan ID not Found.")
+
+def searchloan():
+    loansearch = input("Enter the student ID or device ID: ")
+    for loan in loans:
+        if loan["Student_ID: "] or loan["Device_ID: "] == loansearch:
+            print(loan)
+        return
+    print("Student/Device ID not Found.")
+
+def viewloan():
+    print("Lones:")
+    if not loans:
+        print("There are no current loans!")
+        sleep(1.5)
+        return
+    for loan in loans:
+        print(loan)
+
 
 def deviceloanmanagermenu():
     while True:
@@ -54,7 +66,7 @@ def deviceloanmanagermenu():
         elif decision == 2:
             loanupdate()
         elif decision == 3:
-            loansearch()
+            searchloan()
         elif decision == 4:
             viewloan()
         elif decision == 5:
