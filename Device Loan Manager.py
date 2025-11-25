@@ -48,7 +48,7 @@ def searchloan():
 
 def viewloan():
     print("Loans:")
-    if not loan in loans: # Checks if there's any loans
+    if not loans: # Checks if there's any loans
         print("There are no current loans!")
         sleep(1.5)
         return
@@ -86,6 +86,7 @@ def deviceloanmanagermenu():
             print("Invalid value")
             deviceloanmanagermenu()
 deviceloanmanagermenu()
+
 
 
 
